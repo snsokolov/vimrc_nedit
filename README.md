@@ -1,5 +1,5 @@
 # vimrc_nedit
-Nedit like Vim theme ([_vimrc](_vimrc))
+Nedit like Vim config theme ([_vimrc](_vimrc))
 
 ## License
 Public Domain. For more information, please refer to http://unlicense.org
