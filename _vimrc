@@ -1,4 +1,4 @@
-" Vimrc_nedit - Nedit like Vim theme (github.com/snsokolov/vimrc_nedit)
+" Vimrc_nedit - Nedit like Vim config theme (github.com/snsokolov/vimrc_nedit)
 
 "######################################
 " 1. Vim general settings
