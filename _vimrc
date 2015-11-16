@@ -20,8 +20,18 @@ endif
 " Remove 'Tear off' menus
 set guioptions-=t
 
-" Set Font and Fontsize
-set gfn=Lucida_Console:h9:cRUSSIAN
+" Set Window size, Font and Fontsize
+if has("gui_running")
+    set lines=40 columns=100
+    if has("gui_gtk2")
+        set guifont=Monospace\ 9
+    elseif has("gui_macvim")
+        set guifont=Monospace\ 9
+    else
+        set gfn=Lucida_Console:h9:cRUSSIAN
+    endif
+endif
+
 
 " Set encoding to prevent Vim from picking wrong one for Russian texts
 set enc=cp1251
@@ -38,10 +48,10 @@ set expandtab
 " Tab equals to 4 spaces
 set tabstop=4
 set softtabstop=4
-set shiftwidth=4 
+set shiftwidth=4
 
 " No backup files
-set nobackup 
+set nobackup
 
 " Show the cursor position all the time
 set ruler
@@ -57,6 +67,9 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 
 " Start in insert mode
 set im
+
+" Enables incremental search
+set incsearch
 
 " Highlight search results
 set hlsearch
@@ -103,16 +116,21 @@ noremap  <C-Q>  :quit<CR>
 vnoremap <C-Q> <C-C>:quit<CR>
 inoremap <C-Q> <C-O>:quit<CR>
 
-" Ctrl-V Paste (all modes)
+" Ctrl-V and SHIFT-Insert Paste (all modes)
 noremap  <C-V> "+gP
 vnoremap <C-V> "+gP
 exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
 
-" Ctrl-C Copy (visual selection mode)
-vnoremap <C-C> "+y
+imap <S-Insert> <C-V>
+vmap <S-Insert> <C-V>
 
-" Ctrl-X Cut (visual selection mode)
+" Ctrl-C and CTRL-Insert Copy (visual selection mode)
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+
+" Ctrl-X and SHIFT-Del Cut (visual selection mode)
 vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
 
 " Ctrl-F Find
 if has('gui_running')
@@ -145,3 +163,9 @@ inoremap <C-Y> <C-O><C-R>
 inoremap <C-Left> <C-O>b
 inoremap <C-Right> <C-O>w
 
+"######################################
+" 3. Vim Scripts
+"######################################
+
+" Remove trailing whitespace every time a file is saved.
+au BufWritePre * :%s/\s\+$//e
