@@ -20,9 +20,11 @@ endif
 " Remove 'Tear off' menus
 set guioptions-=t
 
-" Set Window size, Font and Fontsize
+" Set Window and Font size
 if has("gui_running")
+    " Window size rows and columns
     set lines=40 columns=100
+    " Font and Fontsize
     if has("gui_gtk2")
         set guifont=Monospace\ 9
     elseif has("gui_macvim")
