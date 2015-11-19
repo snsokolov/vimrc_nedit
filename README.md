@@ -46,4 +46,3 @@ Ctrl-arrow/backspace/delete Word by word movement/selection
 - Highlight search results
 - Allow you to paste on top of selected text
 - Enable syntax highlighting similar to Nedit
-
