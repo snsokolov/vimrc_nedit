@@ -18,9 +18,9 @@ Esc     Escape from Insert mode
 Ctrl-S  Save the file
 Ctrl-A  Select all
 Ctrl-Q  Close the file (all modes)
-Ctrl-V  Paste (all modes)
-Ctrl-C  Copy (visual selection mode)
-Ctrl-X  Cut (visual selection mode)
+Ctrl-V  Paste (all modes), alse Shift-Ins
+Ctrl-C  Copy (visual selection mode), also Ctrl-Ins
+Ctrl-X  Cut (visual selection mode), also Ctrl-Del
 Ctrl-F  Find
 Ctrl-G  Search
 Ctrl-H  Find selection (visual selection mode)
