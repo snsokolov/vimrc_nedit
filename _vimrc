@@ -23,7 +23,7 @@ set guioptions-=t
 " Set Window and Font size
 if has("gui_running")
     " Window size rows and columns
-    set lines=40 columns=100
+    set lines=40 columns=90
     " Font and Fontsize
     if has("gui_gtk2")
         set guifont=Monospace\ 9
