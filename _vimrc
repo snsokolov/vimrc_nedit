@@ -76,6 +76,9 @@ set incsearch
 " Highlight search results
 set hlsearch
 
+" Case insensitive search
+set ignorecase
+
 " Allow you to paste on top of selected text
 if !has("unix")
     set guioptions-=a
