@@ -2,7 +2,7 @@
 Nedit-like Vim config theme ([_vimrc](_vimrc))
 
 ## License
-Public Domain. For more information, please refer to http://unlicense.org
+This is free and unencumbered software released into the public domain. For more information, please refer to http://unlicense.org
 
 ## Usage
 Save [_vimrc](_vimrc) file as
