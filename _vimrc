@@ -81,8 +81,11 @@ set ignorecase
 
 " Allow you to paste on top of selected text
 if !has("unix")
-    set guioptions-=a
+    set guioptions-=aA
 endif
+
+" Enable horizontal scrollbar
+set guioptions+=b
 
 " Enable syntax highlighting
 syntax on
@@ -144,12 +147,13 @@ else
     inoremap <C-F> <C-O>/
 endif
 
-" Ctrl-G Search
-inoremap <C-G> <C-O>/
-
 " Ctrl-H Find selection (visual selection mode)
 vnoremap <C-H> "+y/<C-R>"<CR>"
 inoremap <C-H> <C-O>n
+
+" Ctrl-G Find selection backwards (visual selection mode)
+vnoremap <C-G> "+y/<C-R>"<CR>"
+inoremap <C-G> <C-O>N
 
 " Ctrl-R Replace
 if has('gui_running')
@@ -159,14 +163,26 @@ else
 endif
 
 " Ctrl-Z Undo
+noremap <C-Z> u
+vnoremap <C-Z> <C-C>u
 inoremap <C-Z> <C-O>u
 
 " Ctrl-Y Redo
+noremap <C-Y> <C-R>
+vnoremap <C-Y> <C-C><C-R>
 inoremap <C-Y> <C-O><C-R>
 
 " Ctrl-arrow/backspace/delete Word by word movement/selection
 inoremap <C-Left> <C-O>b
 inoremap <C-Right> <C-O>w
+
+" Ctrl-[ indent selection or a single line left
+vnoremap <C-[> <
+inoremap <C-[> <C-O><<
+
+" Ctrl-] indent selection or a single line right
+vnoremap <C-]> >
+inoremap <C-]> <C-O>>>
 
 "######################################
 " 3. Vim Scripts
