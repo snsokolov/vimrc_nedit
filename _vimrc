@@ -108,50 +108,65 @@ highlight Type term=none gui=none ctermfg=Black guifg=Black
 
 "######################################
 " 2. Vim Key mappings similar to Nedit
+" n - normal mode
+" v - visual and select modes
+" i - insert mode
 "######################################
 
 " Esc Escape from Insert mode
 inoremap <Esc> <C-L>
 
 " Ctrl-S Save the file
+nnoremap <C-S> :update!<CR>
+vnoremap <C-S> <C-C>:update!<CR>
 inoremap <C-S> <C-O>:update!<CR>
 
-" Ctrl-A Select all
-inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
-
-" Ctrl-Q Close the file (all modes)
-noremap  <C-Q>  :quit<CR>
+" Ctrl-Q Close the file
+nnoremap <C-Q> :quit<CR>
 vnoremap <C-Q> <C-C>:quit<CR>
 inoremap <C-Q> <C-O>:quit<CR>
 
-" Ctrl-V and SHIFT-Insert Paste (all modes)
-noremap  <C-V> "+gP
+" Ctrl-A Select all
+nnoremap <C-A> gggH<C-O>G
+vnoremap <C-A> <C-C><C-O>gg<C-O>gH<C-O>G
+inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+
+" Ctrl-V Paste
+nnoremap <C-V> "+gP
 vnoremap <C-V> "+gP
 exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
 
-imap <S-Insert> <C-V>
-vmap <S-Insert> <C-V>
+" Shift-Insert Paste
+nnoremap <S-Insert> "+gP
+vnoremap <S-Insert> "+gP
+exe 'inoremap <script> <S-Insert> <C-G>u' . paste#paste_cmd['i']
 
-" Ctrl-C and CTRL-Insert Copy (visual selection mode)
+" Ctrl-C/Ins Copy (selection mode only)
 vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
-" Ctrl-X and SHIFT-Del Cut (visual selection mode)
+" Ctrl-X and Shift-Del Cut (selection mode only)
 vnoremap <C-X> "+x
 vnoremap <S-Del> "+x
 
 " Ctrl-F Find
 if has('gui_running')
+    nnoremap <C-F> :promptfind<CR>
+    vnoremap <C-F> "+y/<C-R>"<CR>"
     inoremap <C-F> <C-O>:promptfind<CR>
 else
+    nnoremap <C-F> /
+    vnoremap <C-F> "+y/<C-R>"<CR>"
     inoremap <C-F> <C-O>/
 endif
 
-" Ctrl-H Find selection (visual selection mode)
+" Ctrl-H Find next
+nnoremap <C-H> n
 vnoremap <C-H> "+y/<C-R>"<CR>"
 inoremap <C-H> <C-O>n
 
-" Ctrl-G Find selection backwards (visual selection mode)
+" Ctrl-G Find previous
+nnoremap <C-G> N
 vnoremap <C-G> "+y/<C-R>"<CR>"
 inoremap <C-G> <C-O>N
 
@@ -163,26 +178,30 @@ else
 endif
 
 " Ctrl-Z Undo
-noremap <C-Z> u
+nnoremap <C-Z> u
 vnoremap <C-Z> <C-C>u
 inoremap <C-Z> <C-O>u
 
 " Ctrl-Y Redo
-noremap <C-Y> <C-R>
+nnoremap <C-Y> <C-R>
 vnoremap <C-Y> <C-C><C-R>
 inoremap <C-Y> <C-O><C-R>
 
-" Ctrl-arrow/backspace/delete Word by word movement/selection
+" Ctrl-arrow/backspace/delete Word by word movement/selection/deletion (insert mode)
 inoremap <C-Left> <C-O>b
 inoremap <C-Right> <C-O>w
+inoremap <C-Backspace> <C-O>db
+inoremap <C-Del> <C-O>dw
 
-" Ctrl-[ indent selection or a single line left
-vnoremap <C-[> <
-inoremap <C-[> <C-O><<
+" Alt-left indent selection or a single line left
+nnoremap <A-Left> <
+vnoremap <A-Left> <
+inoremap <A-Left> <C-O><<
 
-" Ctrl-] indent selection or a single line right
-vnoremap <C-]> >
-inoremap <C-]> <C-O>>>
+" Alt-right indent selection or a single line right
+nnoremap <A-Right> >
+vnoremap <A-Right> >
+inoremap <A-Right> <C-O>>>
 
 "######################################
 " 3. Vim Scripts
@@ -190,3 +209,4 @@ inoremap <C-]> <C-O>>>
 
 " Remove trailing whitespace every time a file is saved.
 au BufWritePre * :%s/\s\+$//e
+
