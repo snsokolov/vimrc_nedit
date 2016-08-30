@@ -153,16 +153,10 @@ vnoremap <C-X> "+x
 " Shift-Del Cut (selection mode only)
 vnoremap <S-Del> "+x
 
-" Ctrl-F Find
-"if has('gui_running')
-"    nnoremap <C-F> :promptfind<CR>
-"    vnoremap <C-F> "+y/<C-R>"<CR>"
-"    inoremap <C-F> <C-O>:promptfind<CR>
-"else
-    nnoremap <C-F> /
-    vnoremap <C-F> "+y/<C-R>"<CR>"
-    inoremap <C-F> <C-O>/
-"endif
+" Ctrl-F Find all
+nnoremap <C-F> /
+vnoremap <C-F> "+y/<C-R>"<CR>"
+inoremap <C-F> <C-O>/
 
 " Ctrl-H Find next
 nnoremap <C-H> n
@@ -174,16 +168,10 @@ nnoremap <C-G> N
 vnoremap <C-G> "+y/<C-R>"<CR>"
 inoremap <C-G> <C-O>N
 
-" Ctrl-R Replace
-"if has('gui_running')
-"    nnoremap <C-R> :promptrepl<CR>
-"    vnoremap <C-R> "+y<C-C>:promptrepl <C-R>"<CR>"
-"    inoremap <C-R> <C-O>:promptrepl<CR>
-"else
-    nnoremap <C-R> :%s///gc<left><left><left><left>
-    vnoremap <C-R> "+y<C-C>:%s/<C-R>"//gc<left><left><left>
-    inoremap <C-R> <C-O>:%s///gc<left><left><left><left>
-"endif
+" Ctrl-R Replace with confimation
+nnoremap <C-R> :%s///gc<left><left><left><left>
+vnoremap <C-R> "+y<C-C>:%s/<C-R>"//gc<left><left><left>
+inoremap <C-R> <C-O>:%s///gc<left><left><left><left>
 
 " Ctrl-Z Undo
 nnoremap <C-Z> u
