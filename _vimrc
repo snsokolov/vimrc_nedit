@@ -113,7 +113,7 @@ highlight Type term=none gui=none ctermfg=Black guifg=Black
 " i - insert mode
 "######################################
 
-" Esc Escape from Insert mode
+" Esc Escape from Insert mode (insert mode only)
 inoremap <Esc> <C-L>
 
 " Ctrl-S Save the file
@@ -141,24 +141,28 @@ nnoremap <S-Insert> "+gP
 vnoremap <S-Insert> "+gP
 exe 'inoremap <script> <S-Insert> <C-G>u' . paste#paste_cmd['i']
 
-" Ctrl-C/Ins Copy (selection mode only)
+" Ctrl-C Copy (selection mode only)
 vnoremap <C-C> "+y
+
+" Ctrl-Ins Copy (selection mode only)
 vnoremap <C-Insert> "+y
 
-" Ctrl-X and Shift-Del Cut (selection mode only)
+" Ctrl-X Cut (selection mode only)
 vnoremap <C-X> "+x
+
+" Shift-Del Cut (selection mode only)
 vnoremap <S-Del> "+x
 
 " Ctrl-F Find
-if has('gui_running')
-    nnoremap <C-F> :promptfind<CR>
-    vnoremap <C-F> "+y/<C-R>"<CR>"
-    inoremap <C-F> <C-O>:promptfind<CR>
-else
+"if has('gui_running')
+"    nnoremap <C-F> :promptfind<CR>
+"    vnoremap <C-F> "+y/<C-R>"<CR>"
+"    inoremap <C-F> <C-O>:promptfind<CR>
+"else
     nnoremap <C-F> /
     vnoremap <C-F> "+y/<C-R>"<CR>"
     inoremap <C-F> <C-O>/
-endif
+"endif
 
 " Ctrl-H Find next
 nnoremap <C-H> n
@@ -171,11 +175,15 @@ vnoremap <C-G> "+y/<C-R>"<CR>"
 inoremap <C-G> <C-O>N
 
 " Ctrl-R Replace
-if has('gui_running')
-    inoremap <C-R> <C-O>:promptrepl<CR>
-else
-    inoremap <C-R> <C-O>/
-endif
+"if has('gui_running')
+"    nnoremap <C-R> :promptrepl<CR>
+"    vnoremap <C-R> "+y<C-C>:promptrepl <C-R>"<CR>"
+"    inoremap <C-R> <C-O>:promptrepl<CR>
+"else
+    nnoremap <C-R> :%s///gc<left><left><left><left>
+    vnoremap <C-R> "+y<C-C>:%s/<C-R>"//gc<left><left><left>
+    inoremap <C-R> <C-O>:%s///gc<left><left><left><left>
+"endif
 
 " Ctrl-Z Undo
 nnoremap <C-Z> u
@@ -187,21 +195,28 @@ nnoremap <C-Y> <C-R>
 vnoremap <C-Y> <C-C><C-R>
 inoremap <C-Y> <C-O><C-R>
 
-" Ctrl-arrow/backspace/delete Word by word movement/selection/deletion (insert mode)
-inoremap <C-Left> <C-O>b
-inoremap <C-Right> <C-O>w
-inoremap <C-Backspace> <C-O>db
-inoremap <C-Del> <C-O>dw
-
-" Alt-left indent selection or a single line left
+" Alt-left indent selection or a single line to the left
 nnoremap <A-Left> <
 vnoremap <A-Left> <
 inoremap <A-Left> <C-O><<
 
-" Alt-right indent selection or a single line right
+" Alt-right indent selection or a single line to the right
 nnoremap <A-Right> >
 vnoremap <A-Right> >
 inoremap <A-Right> <C-O>>>
+
+" Ctrl-Left Word by word move left (insert mode only)
+inoremap <C-Left> <C-O>b
+
+" Ctrl-Right Word by word move right (insert mode only)
+inoremap <C-Right> <C-O>w
+
+" Ctrl-Backspace delete word on the left (insert mode only)
+inoremap <C-Backspace> <C-O>db
+
+" Ctrl-Del delete word on the right (insert mode only)
+inoremap <C-Del> <C-O>dw
+
 
 "######################################
 " 3. Vim Scripts
