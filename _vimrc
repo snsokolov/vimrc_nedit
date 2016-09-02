@@ -120,11 +120,13 @@ inoremap <Esc> <C-L>
 nnoremap <C-S> :update!<CR>
 vnoremap <C-S> <C-C>:update!<CR>
 inoremap <C-S> <C-O>:update!<CR>
+cnoremap <C-S> <C-C><C-O>:update!<CR>
 
 " Ctrl-Q Close the file
 nnoremap <C-Q> :quit<CR>
 vnoremap <C-Q> <C-C>:quit<CR>
 inoremap <C-Q> <C-O>:quit<CR>
+cnoremap <C-Q> <C-C><C-O>:quit<CR>
 
 " Ctrl-A Select all
 nnoremap <C-A> gggH<C-O>G
@@ -157,16 +159,19 @@ vnoremap <S-Del> "+x
 nnoremap <C-F> /
 vnoremap <C-F> "+y/<C-R>"<CR>"
 inoremap <C-F> <C-O>/
+cnoremap <C-F> <C-C><C-O>/
 
 " Ctrl-H Find next
 nnoremap <C-H> n
 vnoremap <C-H> "+y/<C-R>"<CR>"
 inoremap <C-H> <C-O>n
+cnoremap <C-H> <CR><C-O>n
 
 " Ctrl-G Find previous
 nnoremap <C-G> N
 vnoremap <C-G> "+y/<C-R>"<CR>"
 inoremap <C-G> <C-O>N
+cnoremap <C-G> <CR><C-O>N
 
 " Ctrl-R Replace with confimation
 nnoremap <C-R> :%s///gc<left><left><left><left>
