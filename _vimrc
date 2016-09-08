@@ -122,6 +122,11 @@ vnoremap <C-S> <C-C>:update!<CR>
 inoremap <C-S> <C-O>:update!<CR>
 cnoremap <C-S> <C-C><C-O>:update!<CR>
 
+" Ctrl-L Jump to a line
+nnoremap <C-L> :
+vnoremap <C-L> <C-C>:
+inoremap <C-L> <C-O>:
+
 " Ctrl-Q Close the file
 nnoremap <C-Q> :quit<CR>
 vnoremap <C-Q> <C-C>:quit<CR>
