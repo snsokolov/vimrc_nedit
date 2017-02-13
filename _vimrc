@@ -35,8 +35,8 @@ if has("gui_running")
 endif
 
 
-" Set encoding to prevent Vim from picking wrong one for Russian texts
-set enc=cp1251
+" Set unicode encoding by defualt
+set encoding=utf-8
 
 " Never wrap long lines on the screen
 set nowrap
@@ -111,6 +111,7 @@ highlight Type term=none gui=none ctermfg=Black guifg=Black
 " n - normal mode
 " v - visual and select modes
 " i - insert mode
+" c - cmd mode
 "######################################
 
 " Esc Escape from Insert mode (insert mode only)
@@ -142,6 +143,7 @@ inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
 nnoremap <C-V> "+gP
 vnoremap <C-V> "+gP
 exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+cnoremap <C-V> <C-R>"
 
 " Shift-Insert Paste
 nnoremap <S-Insert> "+gP
