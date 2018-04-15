@@ -1,18 +1,19 @@
-# vimrc_nedit
-Nedit-like Vim config theme ([_vimrc](_vimrc))
+# vimrc\_nedit
+Nedit-like Vim config theme ([\_vimrc](_vimrc))
 
 ## License
 This is free and unencumbered software released into the public domain. For more information, please refer to http://unlicense.org
 
 ## Usage
-Save [_vimrc](_vimrc) file as
+Save [\_vimrc](_vimrc) file as
 
-Windows:  `C:/Program Files/Vim/_vimrc`
+Windows: `C:/Program Files/Vim/_vimrc`
 
 Linux: `~/.vimrc`
 
 ## Key mappings
 Following Nedit key mappings are supported:
+
 ```
 Esc     Escape from Insert mode
 Ctrl-S  Save the file
